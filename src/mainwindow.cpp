@@ -355,34 +355,30 @@ void MainWindow::getPairs()
      {
 
         if (!p.visibleAnchs.empty()) {
-             IDComb tmp;
-             tmp.firstID = p.visibleAnchs[0].ID;
-             bool first = true;
-             for(Anchor& a: p.visibleAnchs)
-             {
-                if(first != true)
-                {
-                     tmp.secondID = a.ID;
-                     p.reference.push_back(tmp);
-                }
-                first = false;
-             }
+            IDComb tmp;
+            tmp.firstID = 0;
+            bool first = true;
+
+
+            for (int x = 1; x < p.visibleAnchs.size()-1; x++) {
+                tmp.secondID = x;
+                p.reference.push_back(tmp);
+            }
+
         }
      }
 
      // pairing (0-1),(0-2)....
      for (TestingPoints& p : tagPoints)
      {
-
-
          if(p.visibleAnchs.size() < 2)
              continue;
-         IDComb tmp;
-             for (int x = 0; x < p.visibleAnchs.size()-1; x++) {
-                 tmp.firstID = p.visibleAnchs[x].ID;
-                 tmp.secondID = p.visibleAnchs[x+1].ID;
+            IDComb tmp;
+            for (int x = 0; x < p.visibleAnchs.size()-1; x++) {
+                 tmp.firstID = x;
+                 tmp.secondID = x+1;
                  p.pairs.push_back(tmp);
-             }
+            }
      }
 
 

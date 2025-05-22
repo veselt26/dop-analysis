@@ -110,8 +110,8 @@ DOPValues Calculate_DOP::TDoA_gdop_3D_pair (std::vector<Anchor>& anchors, std::v
 
     // Calculate of Jakobian
     for (int i = 0; i < n; i++) {
-        Anchor ref_anchor = anchors[comb[i].firstID];
-        Anchor sec_anchor = anchors[comb[i].secondID];
+        Anchor ref_anchor = anchors.at(comb[i].firstID);
+        Anchor sec_anchor = anchors.at(comb[i].secondID);
 
         double d = distance_3D(sec_anchor, tag);
         double ref_distance = distance_3D(ref_anchor,tag);
